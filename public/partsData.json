@@ -1,0 +1,38 @@
+[
+    {
+        "_id":1,
+        "name":"Extra Fast Turbine For Gasoline Sporting Car",
+        "description":"Instead, air is compressed and fed into a combustion chamber, into which fuel is sprayed. The fuel/air mixture is then ignited and the gases produced are used to power a turbine. Generally speaking, the power produced by this turbine is used to run the compressor that pressurises the air fed into the combustion chamber rather than also being used for propulsion. The exhaust gases then pass through a second turbine attached to a shaft, thereby creating the mechanical power used for propulsion.",
+        "price":46,
+        "minQuantity":5,
+        "image":"https://i.ibb.co/MCzFwn7/car-parts-1.jpg",
+        "color":["Black", "Blue", "Red", "Yellow"],
+        "stock":100,
+        "rating":5
+        
+    },
+    {
+        "_id":2,
+        "name":"Aluminum Sports Alternator Turbo Car Boost",
+        "description":"Boost is positive pressure created by a turbo or supercharger. It forces more air into the engine. This can be matched with more fuel, to create a bigger bang inside the cylinders - resulting in more power.",
+        "price":220,
+        "minQuantity":3,
+        "image":"https://i.ibb.co/zRGJs5z/car-parts-2.jpg",
+        "color":["Black", "Gray", "Red"],
+        "stock":50,
+        "rating":5
+        
+    },
+    {
+        "_id":3,
+        "name":"Laser Iridium Spark Plug High Alumina Ceramics",
+        "description":"Spark plugs develop a very high temperature during operation. So a material with high melting temperature, low thermal expansion is required to absorb the shock generated in the spark plug. Ceramics are inherently known for high temperature withstanding capabilities. So spark plugs are made of ceramic.",
+        "price":50,
+        "minQuantity":6,
+        "image":"https://i.ibb.co/PFJZDdM/car-parts-3.jpg",
+        "color":["Black", "Gray", "White"],
+        "stock":120,
+        "rating":5
+        
+    }
+]
