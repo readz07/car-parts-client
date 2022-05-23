@@ -3,7 +3,7 @@ import usePartsData from '../../../hooks/usePartsData';
 import SinglePart from './SinglePart';
 
 const Parts = () => {
-    const [parts, setParts] = usePartsData()
+    const [parts] = usePartsData()
     return (
         <div className='my-28'>
             <h1 className='text-5xl text-center uppercase font-bold'>Parts We Manufacture: {parts.length}</h1>

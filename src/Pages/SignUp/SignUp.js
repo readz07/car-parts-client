@@ -3,6 +3,8 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
+import SocialSignIn from '../SocialSignIn/SocialSignIn';
 const SingUp = () => {
     const [
         createUserWithEmailAndPassword,
@@ -31,7 +33,7 @@ const SingUp = () => {
 
     }
     if (loading || updating) {
-        return <p>Loading...</p>;
+        return <Loading></Loading>;
     }
     if (user) {
         return (
@@ -103,8 +105,11 @@ const SingUp = () => {
                         <button type='submit' class="btn btn-primary">Sign Up</button>
                     </div>
                     </form>
+                    <div class="divider">OR</div>
+                    <SocialSignIn/>
                 </div>
             </div>
+            
         </div>
     );
 };

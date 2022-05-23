@@ -1,13 +1,22 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Link } from "react-router-dom";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from "react-router-dom";
+import auth from '../../../firebase.init';
 const Header = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate()
+    const handleSignOut = () => {
+        signOut(auth);
+        navigate('/signin')
+      };
     const menuItems = <>
-         <li><Link to="/">Home</Link></li>
-         <li><Link to="/blog">Blog</Link></li>
-         <li><Link to="/myportfolio">My Portfolio</Link></li>
-         <li><Link to="/dashboard">Dashboard</Link></li>
-         <li><Link to="/signin">Sign In</Link></li>
-         <li><Link to="/signup">Sign Up</Link></li>       
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/blog">Blog</Link></li>
+        <li><Link to="/myportfolio">My Portfolio</Link></li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        {user ? <button onClick={handleSignOut} class="btn btn-active btn-ghost">Sign Out</button> : <li><Link to='./signin'>Sign In</Link></li>}
+        {!user && <li><Link to='./signup'>Sign Up</Link></li>}
     </>
     return (
         <div className="navbar bg-base-100">
@@ -20,7 +29,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                    <h3>Car Parts</h3>
+                <h3>Car Parts</h3>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -28,7 +37,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn btn-primary text-white font-bold">Get started</button>
+                {
+                    user && <button className="btn btn-primary text-white font-bold">I am {user?.displayName}</button>
+                }                
             </div>
         </div>
     );

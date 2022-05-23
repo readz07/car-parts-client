@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
+import SocialSignIn from '../SocialSignIn/SocialSignIn';
 
 const SingIn = () => {
     const [
@@ -20,24 +22,26 @@ const SingIn = () => {
         console.log(data);
     }
 
+    const navigate = useNavigate()
+    let location = useLocation();  
+    let from = location.state?.from?.pathname || "/";
+
     let errorMsg;
     if (error) {
         errorMsg =
             <div>
                 <p>Error: {error.message}</p>
             </div>
+    }
 
-    }
     if (loading) {
-        return <p>Loading...</p>;
+        return <Loading></Loading>;
     }
+
     if (user) {
-        return (
-            <div>
-                <p>Registered User: {user.email}</p>
-            </div>
-        );
+        navigate(from, { replace: true })    
     }
+
     return (
         <div className='flex justify-center items-center h-screen'>
             <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -93,8 +97,10 @@ const SingIn = () => {
                             If You are Not A Member<Link to="/signup" class="text-blue-600 link link-hover">Sign Up Here</Link>
                         </label>
                     </form>
+                    <div class="divider">OR</div>
+                    <SocialSignIn/>
                 </div>
-            </div>
+            </div>            
         </div>
     );
 };
