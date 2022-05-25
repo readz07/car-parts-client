@@ -9,6 +9,11 @@ import Header from "./Pages/Shared/Header/Header";
 import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 import SingIn from "./Pages/SignIn/SingIn";
 import SingUp from "./Pages/SignUp/SignUp";
+import { ToastContainer } from 'react-toastify';
+import OrderConfirm from "./Pages/Main/Parts/OrderConfirm";
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import AddMyReview from "./Pages/Dashboard/AddMyReview";
+import MyOrders from "./Pages/Dashboard/MyOrders";
 
 
 function App() {
@@ -24,16 +29,26 @@ function App() {
           <RequireAuth>
             <Dashboard />
           </RequireAuth>
-        } />
+        } >
+          <Route path="myorders" element={<MyOrders />} />
+          <Route path=":invoiceId" element={<AddMyReview />} />
+          <Route path="sent" element={<MyProfile />} />
+        </Route>
         <Route path="/orderparts/:id" element={
           <RequireAuth>
-            <OrderParts/>
+            <OrderParts />
+          </RequireAuth>
+        } />
+        <Route path="/orderconfirm" element={
+          <RequireAuth>
+            <OrderConfirm />
           </RequireAuth>
         } />
         <Route path="/signin" element={<SingIn />} />
         <Route path="/signup" element={<SingUp />} />
       </Routes>
-      <Footer/>
+      <Footer />
+      <ToastContainer />
     </div>
   );
 }

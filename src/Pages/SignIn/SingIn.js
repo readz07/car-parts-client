@@ -19,7 +19,6 @@ const SingIn = () => {
     //handle form submit
     const onSubmit = async data => {
         signInWithEmailAndPassword(data.email, data.password)
-        console.log(data);
     }
 
     const navigate = useNavigate()
