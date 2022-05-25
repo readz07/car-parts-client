@@ -1,8 +1,9 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToekn';
 import Loading from '../Shared/Loading/Loading';
 import SocialSignIn from '../SocialSignIn/SocialSignIn';
 const SingUp = () => {
@@ -15,6 +16,16 @@ const SingUp = () => {
 
     //update profile initailize
     const [updateProfile, updating, updateProfileError] = useUpdateProfile(auth);
+
+    // use token
+    const [token] = useToken(user)
+
+    // navigate user
+    const navigate = useNavigate()
+    let location = useLocation();  
+    let from = location.state?.from?.pathname || "/";
+
+
     //react-router form validation
     const { register, handleSubmit, formState: { errors } } = useForm();
     //handle form submit
@@ -34,12 +45,8 @@ const SingUp = () => {
     if (loading || updating) {
         return <Loading></Loading>;
     }
-    if (user) {
-        return (
-            <div>
-                <p>Registered User: {user.email}</p>
-            </div>
-        );
+    if (token) {
+        navigate(from, { replace: true })
     }
     return (
         <div className='flex justify-center items-center h-screen'>

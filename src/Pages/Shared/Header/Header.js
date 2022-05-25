@@ -8,6 +8,7 @@ const Header = () => {
     const navigate = useNavigate()
     const handleSignOut = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken')
         navigate('/signin')
       };
     const menuItems = <>

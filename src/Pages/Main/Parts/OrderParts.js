@@ -39,7 +39,6 @@ const OrderParts = () => {
             name: user.displayName,
             phone: event.target.phone.value,
             address:event.target.address.value,
-            prodcutId : _id,
             productName: name,
             productPrice: price,
             productQuantity: minQuantity,
@@ -53,7 +52,7 @@ const OrderParts = () => {
         if(data.insertedId){
             toast('Your order has sent to que');
             event.target.reset()
-            navigate('/orderconfirm')
+            navigate('/dashboard')
         }
     })
     }

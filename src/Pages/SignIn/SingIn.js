@@ -3,6 +3,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToekn';
 import Loading from '../Shared/Loading/Loading';
 import SocialSignIn from '../SocialSignIn/SocialSignIn';
 
@@ -24,7 +25,8 @@ const SingIn = () => {
     const navigate = useNavigate()
     let location = useLocation();  
     let from = location.state?.from?.pathname || "/";
-
+    // use token
+    const [token] = useToken(user)
     let errorMsg;
     if (error) {
         errorMsg =
@@ -37,7 +39,7 @@ const SingIn = () => {
         return <Loading></Loading>;
     }
 
-    if (user) {
+    if (token) {
         navigate(from, { replace: true })    
     }
 

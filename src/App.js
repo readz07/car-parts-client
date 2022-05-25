@@ -14,6 +14,7 @@ import OrderConfirm from "./Pages/Main/Parts/OrderConfirm";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import AddMyReview from "./Pages/Dashboard/AddMyReview";
 import MyOrders from "./Pages/Dashboard/MyOrders";
+import AllUsers from "./Pages/Dashboard/AllUsers";
 
 
 function App() {
@@ -30,9 +31,10 @@ function App() {
             <Dashboard />
           </RequireAuth>
         } >
-          <Route path="myorders" element={<MyOrders />} />
-          <Route path=":invoiceId" element={<AddMyReview />} />
-          <Route path="sent" element={<MyProfile />} />
+          <Route index element={<MyOrders />} />
+          <Route path="addmyreview" element={<AddMyReview />} />
+          <Route path="myprofile" element={<MyProfile />} />
+          <Route path="allusers" element={<AllUsers />} />
         </Route>
         <Route path="/orderparts/:id" element={
           <RequireAuth>
