@@ -15,7 +15,7 @@ const Header = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/blog">Blog</Link></li>
         <li><Link to="/myportfolio">My Portfolio</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
         {user ? <button onClick={handleSignOut} class="btn btn-active btn-ghost">Sign Out</button> : <li><Link to='./signin'>Sign In</Link></li>}
         {!user && <li><Link to='./signup'>Sign Up</Link></li>}
     </>

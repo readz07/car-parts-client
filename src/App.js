@@ -15,7 +15,11 @@ import MyProfile from "./Pages/Dashboard/MyProfile";
 import AddMyReview from "./Pages/Dashboard/AddMyReview";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import AllUsers from "./Pages/Dashboard/AllUsers";
-
+import MyPayment from "./Pages/Dashboard/MyPayment";
+import NotFound from "./Pages/NotFound/NotFound";
+import AddAProduct from "./Pages/AdminUser/AddAProduct/AddAProduct";
+import 'react-toastify/dist/ReactToastify.css';
+import ManageOrders from "./Pages/Dashboard/ManageOrders";
 
 function App() {
   return (
@@ -26,6 +30,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/myportfolio" element={<MyPortFolio />} />
+        
         <Route path="/dashboard" element={
           <RequireAuth>
             <Dashboard />
@@ -35,6 +40,10 @@ function App() {
           <Route path="addmyreview" element={<AddMyReview />} />
           <Route path="myprofile" element={<MyProfile />} />
           <Route path="allusers" element={<AllUsers />} />
+          <Route path="mypayment/:id" element={<MyPayment />} />
+          <Route path="addaproduct" element={<AddAProduct />} />
+          <Route path="manageorders" element={<ManageOrders />} />
+          <Route path="manageproducts" element={<AddAProduct />} />
         </Route>
         <Route path="/orderparts/:id" element={
           <RequireAuth>
@@ -48,6 +57,7 @@ function App() {
         } />
         <Route path="/signin" element={<SingIn />} />
         <Route path="/signup" element={<SingUp />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <ToastContainer />

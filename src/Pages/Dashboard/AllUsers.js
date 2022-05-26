@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import SingleUser from './SingleUser';
 
 const AllUsers = () => {
     const { isLoading, error, data: users, refetch } = useQuery('allusers', () =>
@@ -11,6 +12,7 @@ const AllUsers = () => {
         }).then(res=>res.json())
     )
     
+    
     return (
         <div>
             Total Users: {users?.length}
@@ -20,18 +22,15 @@ const AllUsers = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>User Name</th>
                             <th>User Email</th>
+                            <th>Make Admin</th>
+                            <th>Delete Admin</th>
                         </tr>
                     </thead>
                     <tbody>                       
                            {
-                               users?.map((u, index)=>
-                                <tr>
-                                <th>{index+1}</th>
-                                <td>{u.displayname}</td>
-                                <td>{u.email}</td>                               
-                            </tr>    
+                               users?.map((user, index)=>
+                                <SingleUser key={user._id} user={user}  index={index} refetch={refetch}></SingleUser>
                                )
                            }               
                     </tbody>

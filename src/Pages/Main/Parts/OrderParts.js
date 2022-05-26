@@ -10,25 +10,19 @@ const OrderParts = () => {
     const [user, loading, error] = useAuthState(auth);
     const { id } = useParams()
     const [order, setOrder] = useState({});
-    const [newQuantity, setNewQuantity] = useState({});
+    const [newQuantity, setNewQuantity] = useState(localStorage.getItem(id));
+    const [quantityError, setQuantityError] = useState('')
+    
+  
     useEffect(() => {
         fetch(`http://localhost:5000/part/${id}`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [id])
     const { _id, name, image, description, stock, price, minQuantity } = order;
-    // add quantity
-    const handleAddQuantity = () => {
-        const previouQuantiy = 1
-        const quantity = minQuantity + previouQuantiy;
-        console.log(quantity)
-
-    }
-
-    // less quantity
-    const lessQuantity = () => {
-
-    }
+   
+   
+   
     // navigation
     const navigate = useNavigate()
     // submit form
@@ -56,11 +50,40 @@ const OrderParts = () => {
         }
     })
     }
+
+    const handleQuantity = (increase) => {
+        if (increase && newQuantity > 0) {
+          let newQuantityParts = parseInt(newQuantity) + 1;
+          setNewQuantity(newQuantityParts);
+    
+          if (newQuantityParts < minQuantity) {
+            setQuantityError(`You have to order minimum ${minQuantity} parts`);
+          } else if (newQuantityParts > stock) {
+            setQuantityError(
+              `You can not order more then available quantity of: ${stock}`
+            );
+          } else {
+            setQuantityError("");
+          }
+        } else if (!increase && newQuantity > 1) {
+          let newQuantityParts = parseInt(newQuantity) - 1;
+          setNewQuantity(newQuantityParts);
+          if (newQuantityParts < minQuantity) {
+            setQuantityError(`You have to order minimum ${minQuantity} items`);
+          } else if (newQuantityParts > stock) {
+            setQuantityError(
+             ` You can not order more then available quantity of: ${stock}`
+            );
+          } else {
+            setQuantityError("");
+          }
+        }
+      };
     return (
         <div class="grid grid-1 place-center place-items-center">
             <div className='text-center mt-4 mb-4 text-5xl font-bold'><h1>Your Order Page:</h1></div>
             <ToastContainer />
-            <div class="card md:w-2/3 lg:w-96 sm:3/5 xs:w-full bg-base-100 shadow-xl mt-4 mb-28">
+            <div class="card md:w-2/3 lg:w-1/2 sm:3/5 xs:w-full bg-base-100 shadow-xl mt-4 mb-28">
                 <div class="card-body">
                     <div class="card-actions justify-center">                        
                         <label for="my-modal-3" class="btn modal-button btn-accent">Product Detail</label>
@@ -106,14 +129,15 @@ const OrderParts = () => {
                         <label class="label">
                             <span class="label-text font-bold">Product Mnimum Order Quantity</span>
                         </label>
-                        <input type="text" value={minQuantity} readOnly disabled class="input input-bordered" />
+                        <input type="text" value={newQuantity} readOnly disabled class="input input-bordered" />
+                        <p className="text-error font-bold mb-2">{quantityError ? quantityError : ""}</p>
                         <label class="label">
-                            <span class="label-text font-bold btn btn-accent text-white">Add Quantity</span>
-                            <span class="label-text font-bold btn btn-accent text-white">Less Quantity</span>
+                            <span onClick={()=>handleQuantity(true)}  class="label-text font-bold btn btn-accent text-white">Add Quantity</span>
+                            <span onClick={()=>handleQuantity(false)} class="label-text font-bold btn btn-accent text-white">Less Quantity</span>
                         </label>
                     </div>                   
                     <div class="form-control mt-6">
-                        <button type='submit' class="btn btn-primary">Confirm Order</button>
+                        <button disabled={quantityError} type='submit' class="btn btn-primary">Confirm Order</button>
                     </div>
                     </form>
                 </div>

@@ -3,7 +3,7 @@ import React from 'react';
 const BusinessStats = () => {
     return (
         <div>
-            <div class="text-center h-screen" style={{ background: "url(https://i.ibb.co/g6hdfLd/car-parts-bd.png)?no-repeat", backgroundSize: "cover" }}>
+            <div class="text-center" style={{ background: "url(https://i.ibb.co/g6hdfLd/car-parts-bd.png)?no-repeat", backgroundSize: "cover" }}>
                 <h5 className='text-5xl text-primary m-5 font-bold uppercase'>Our Business Statistics</h5>
                 <div class="stats shadow">
 

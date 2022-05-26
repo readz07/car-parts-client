@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Link, useNavigate } from 'react-router-dom';
-import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
-import DeleteModal from './DeleteModal';
+import DeleteOrdersModal from './DeleteOrdersModal';
 
-const MyOrders = () => {
-    const [orderDelete, setOrderDelete] = useState([])
-    const [user] = useAuthState(auth)
-    const email = user.email
+
+const ManageOrders = () => {
+    const [ordersDelete, setOrdersDelete] = useState([])
     const navigate = useNavigate()
-    const { isLoading, error, data: pendingOrders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/orders?email=${email}`, {
+    const { isLoading, error, data: allOrders, refetch } = useQuery('allorders', () =>
+        fetch(`http://localhost:5000/allorders`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,7 +18,8 @@ const MyOrders = () => {
         }).then(res => {
             console.log(res)
             if (res.status === 401 || res.status === 403) {
-                navigate('/')
+                // navigate('/')
+                console.log(res.status)
             }
             return res.json()
         }
@@ -32,10 +31,10 @@ const MyOrders = () => {
     }
 
    
-
+    
     return (
         <div>
-            
+            <h1>Manage All Orders</h1>
             <div class="overflow-x-auto">
                 <table class="table w-full">
 
@@ -43,39 +42,39 @@ const MyOrders = () => {
                         <tr>
                             <th></th>
                             <th>Parts Name</th>
-                            <th>Transaction ID</th>
+                            
                             <th>Delete Orders</th>
                             <th>Confirm Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            pendingOrders?.map((o, index) =>
+                            allOrders?.map((o, index) =>
                                 <tr>
                                     <th>{index + 1}</th>
                                     <td>{o.productName}</td>
-                                    <td>Transaction ID</td>
-                                    <td>{!o.paid && <label onClick={() => setOrderDelete(o)}
-                                        htmlFor="my-order-delete"
+                                    
+                                    <td>{!o.paid && <label onClick={() => setOrdersDelete(o)}
+                                        htmlFor="order-delete-modal"
                                         className="btn modal-button btn-sm btn-error"
                                     >Delete Order</label>}</td>
-                                    <td>{!o.paid && <Link to={`/dashboard/mypayment/${o._id}`}><button className='btn btn-primary btn-sm'>Pay Now</button></Link>}</td>
+                                    <td>{o.paid && <Link to={`/dashboard/mypayment/${o._id}`}><button className='btn btn-primary btn-sm'>Processing</button></Link>}</td>
                                 </tr>
                             )
                         }
                     </tbody>
                 </table>
             </div>
-            {orderDelete && (
-                <DeleteModal
-                    key={orderDelete._id}
-                    orderDelete={orderDelete}
+            {ordersDelete && (
+                <DeleteOrdersModal
+                    key={ordersDelete._id}
+                    ordersDelete={ordersDelete}
                     refetch={refetch}
-                    setOrderDelete={setOrderDelete}
-                ></DeleteModal>
+                    setOrdersDelete={setOrdersDelete}
+                ></DeleteOrdersModal>
             )}
         </div>
     );
 };
 
-export default MyOrders;
+export default ManageOrders;

@@ -1,15 +1,18 @@
 import React from 'react';
 
-const SingleReview = () => {
+const SingleReview = ({ r }) => {
+    const {rating, image, description} =r 
     return (
-        <div class="card w-96 bg-neutral text-neutral-content">
-            <div class="card-body items-center text-center">
-                <h2 class="card-title">Cookies!</h2>
-                <p>We are using cookies for no reason.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Accept</button>
-                    <button class="btn btn-ghost">Deny</button>
+        <div class="card w-96 bg-primary text-neutral-content h-100">
+            <div class="card-body items-center">
+                <h2 class="card-title">Rating: {rating} Star</h2>
+                <div class="avatar">
+                    <div class="w-24 rounded">
+                        <img src={image} alt="person" />
+                    </div>
                 </div>
+                <p>{description}</p>
+                
             </div>
         </div>
     );
