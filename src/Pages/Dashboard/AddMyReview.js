@@ -28,8 +28,8 @@ const AddMyReview = () => {
     }
 
     return (
-        <div className="grid grid-1 place-items-center">
-            <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="grid grid-1 place-items-center mb-12">
+            <div className="card lg:w-1/2 sm:w-3/4 md:w-3/4 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">Add Your Review Here</h2>
                     <form onSubmit={handleReview}>

@@ -19,7 +19,7 @@ const Dashboard = () => {
                 <div className="drawer-content mt-4 ml-4">
                     <h1 className='text-4xl font-bold mb-8'>Dashboard</h1>
                     <Outlet />
-                    <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden btn-sm my-4">Open Sidebar</label>
 
                 </div>
                 <div className="drawer-side">

@@ -9,7 +9,7 @@ const MyPortFolio = () => {
                 <div className="card w-3/4 bg-base-100 shadow-xl">
                     <figure><img src={profileImg} alt="Shoes" /></figure>
                     <div className="card-body">
-                        <h2 className="card-title badge badge-secondary p-8 text-4xl">I am Readul Huq Khan
+                        <h2 className="card-title badge badge-secondary p-8 lg:text-4xl">I am Readul Huq Khan
                         </h2>
                         <p>I want to become a Web Developer. For my career I have taken the admission for Programming hero course 5 months ago. I am so glad. Now I am confident engouh to take any project to execute.
                         </p>

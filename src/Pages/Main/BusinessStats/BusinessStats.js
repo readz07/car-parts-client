@@ -2,37 +2,32 @@ import React from 'react';
 
 const BusinessStats = () => {
     return (
-        <div>
-            <div className="text-center" style={{ background: "url(https://i.ibb.co/g6hdfLd/car-parts-bd.png)?no-repeat", backgroundSize: "cover" }}>
-                <h5 className='text-5xl text-primary m-5 font-bold uppercase'>Our Business Statistics</h5>
-                <div className="stats shadow">
+        <div class="stats stats-vertical lg:stats-horizontal shadow grid lg:grid-4 md:grid-2 sm-grid:2 mx-12 sm:mx-24">
 
-                    <div className="stat place-items-center">
-                        <div className="stat-title">Total Products</div>
-                        <div className="stat-value">3</div>
-                        <div className="stat-desc">More products are coming soon!</div>
-                    </div>
-
-                    <div className="stat place-items-center">
-                        <div className="stat-title">Total Custmoers</div>
-                        <div className="stat-value text-primary">4,200</div>
-                        <div className="stat-desc text-primary">Return Custmoers 90%</div>
-                    </div>
-
-                    <div className="stat place-items-center">
-                        <div className="stat-title">Users</div>
-                        <div className="stat-value text-secondary">4,200</div>
-                        <div className="stat-desc text-secondary">↗︎ 40 (2%)</div>
-                    </div>
-
-                    <div className="stat place-items-center">
-                        <div className="stat-title">New Registers</div>
-                        <div className="stat-value">1,200</div>
-                        <div className="stat-desc">↘︎ 90 (14%)</div>
-                    </div>
-
-                </div>
+            <div class="stat">
+                <div class="stat-title xs:text-center md:text-center sm:text-center lg:text-left">Total Orders</div>
+                <div class="stat-value  xs:text-center md:text-center sm:text-center lg:text-left">31K</div>
+                <div class="stat-desc   xs:text-center md:text-center sm:text-center lg:text-left">Jan 1st - Feb 1st</div>
             </div>
+
+            <div class="stat">
+                <div class="stat-title xs:text-center md:text-center sm:text-center lg:text-left">Total Sales</div>
+                <div class="stat-value xs:text-center md:text-center sm:text-center lg:text-left">444,200</div>
+                <div class="stat-desc xs:text-center md:text-center sm:text-center lg:text-left">↗︎ 1111400 (22%)</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-title xs:text-center md:text-center sm:text-center lg:text-left">Users</div>
+                <div class="stat-value xs:text-center md:text-center sm:text-center lg:text-left">34,200</div>
+                <div class="stat-desc xs:text-center md:text-center sm:text-center lg:text-left">↗︎ 400 (22%)</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-title xs:text-center md:text-center sm:text-center lg:text-left">New Registers</div>
+                <div class="stat-value xs:text-center md:text-center sm:text-center lg:text-left">10,200</div>
+                <div class="stat-desc xs:text-center md:text-center sm:text-center lg:text-left">↘︎ 90 (14%)</div>
+            </div>
+
         </div>
     );
 };
