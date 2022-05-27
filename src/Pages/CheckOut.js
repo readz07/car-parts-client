@@ -142,7 +142,10 @@ const CheckOut = ({ paidOrder }) => {
                     </button>
                 </form>
                 {cardError && <p className='text-red-500'>{cardError}</p>}
-                {cardSuccess && <p className='text-green-500'>{cardSuccess}</p>}
+                {cardSuccess && <>
+                    <p className='text-white'>{cardSuccess}</p>
+                    <p className='text-white'>Trx Id: {transactionId}</p>
+                </>}
             </>
         </div>
     );

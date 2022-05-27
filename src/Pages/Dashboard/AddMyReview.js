@@ -5,17 +5,17 @@ import { toast } from 'react-toastify';
 const AddMyReview = () => {
     const handleReview = event => {
         event.preventDefault();
-        
-        const review ={
+
+        const review = {
             rating: event.target.rating.value,
             image: event.target.image.value,
             description: event.target.description.value,
-            
-        }
-        
-        
 
-    
+        }
+
+
+
+
         axios.post('http://localhost:5000/reviews', review)
             .then(response => {
                 const { data } = response;
@@ -25,8 +25,8 @@ const AddMyReview = () => {
                 }
             })
 
-    }        
-    
+    }
+
     return (
         <div className="grid grid-1 place-items-center">
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -34,26 +34,37 @@ const AddMyReview = () => {
                     <h2 className="card-title">Add Your Review Here</h2>
                     <form onSubmit={handleReview}>
                         <div className="form-control my-3">
-                            <label className="label">
-                                <span className="label-text">Rating</span>
-                            </label>                            
-                            <input type="number" required name="rating" placeholder="Type rating here" className="input w-full max-w-xs input-bordered input-md" />
+                            
+                            <select
+                                name="rating"
+                                className="select select-bordered w-full max-w-lg"
+                                required
+                            >
+                                <option disabled selected>
+                                    Give a rating
+                                </option>
+                                <option defaultValue="1">1</option>
+                                <option defaultValue="2">2</option>
+                                <option defaultValue="3">3</option>
+                                <option defaultValue="4">4</option>
+                                <option defaultValue="5">5</option>
+                            </select>
                         </div>
                         <div className="form-control my-3">
                             <label className="label">
                                 <span className="label-text">Insert Square Image</span>
-                            </label>                            
+                            </label>
                             <input type="text" required name="image" placeholder="Image Link" className="input w-full max-w-xs input-bordered input-md" />
                         </div>
                         <div className="form-control my-3">
                             <label className="label">
                                 <span className="label-text">Description</span>
-                            </label>                            
+                            </label>
                             <textarea required className="textarea input w-full max-w-xs input-bordered" name="description" placeholder="Description"></textarea>
                         </div>
-                        
-                        
-                        
+
+
+
                         <div className="card-actions justify-end">
                             <button type='submit' className="btn btn-primary">Add Now</button>
                         </div>

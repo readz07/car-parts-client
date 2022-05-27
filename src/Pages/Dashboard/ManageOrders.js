@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
@@ -30,8 +31,18 @@ const ManageOrders = () => {
         return (<Loading />)
     }
 
-   
-    
+    const shippingStatus = (id) => {
+        axios(`http://localhost:5000/shippingstatus/${id}`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }).then((res) => {
+          refetch();
+        });
+      };
+
     return (
         <div>
             <h1>Manage All Orders</h1>
@@ -42,9 +53,9 @@ const ManageOrders = () => {
                         <tr>
                             <th></th>
                             <th>Parts Name</th>
-                            
+
                             <th>Delete Orders</th>
-                            <th>Confirm Payment</th>
+                            <th>Confirm Shipment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,12 +64,33 @@ const ManageOrders = () => {
                                 <tr>
                                     <th>{index + 1}</th>
                                     <td>{o.productName}</td>
-                                    
+
                                     <td>{!o.paid && <label onClick={() => setOrdersDelete(o)}
                                         htmlFor="order-delete-modal"
                                         className="btn modal-button btn-sm btn-error"
                                     >Delete Order</label>}</td>
-                                    <td>{o.paid && <Link to={`/dashboard/mypayment/${o._id}`}><button className='btn btn-primary btn-sm'>Processing</button></Link>}</td>
+                                    <td>
+                                        {o.paid ? (
+                                            !o?.shipping_status ? (
+                                                <button
+                                                    onClick={() => shippingStatus(o._id)}
+                                                    className="btn btn-info mr-5"
+                                                >
+                                                    Pending
+                                                </button>
+                                            ) : (
+                                                <button                                                    
+                                                    className="btn btn-success mr-5"                                                >
+                                                    Shipped
+                                                </button>
+                                            )
+                                        ) : (
+                                            <>
+                                                <button className="btn btn-warning mr-5">Unpaid</button>
+                                            </>
+                                        )}
+                                    </td>
+
                                 </tr>
                             )
                         }

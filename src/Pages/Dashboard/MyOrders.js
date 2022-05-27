@@ -54,7 +54,7 @@ const MyOrders = () => {
                                 <tr>
                                     <th>{index + 1}</th>
                                     <td>{o.productName}</td>
-                                    <td>Transaction ID</td>
+                                    <td>{o.transactionId? o.transactionId: 'Not Paid'}</td>
                                     <td>{!o.paid && <label onClick={() => setOrderDelete(o)}
                                         htmlFor="my-order-delete"
                                         className="btn modal-button btn-sm btn-error"

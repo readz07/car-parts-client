@@ -20,6 +20,7 @@ import NotFound from "./Pages/NotFound/NotFound";
 import AddAProduct from "./Pages/AdminUser/AddAProduct/AddAProduct";
 import 'react-toastify/dist/ReactToastify.css';
 import ManageOrders from "./Pages/Dashboard/ManageOrders";
+import ManageProducts from "./Pages/Dashboard/ManageProducts";
 
 function App() {
   return (
@@ -43,7 +44,7 @@ function App() {
           <Route path="mypayment/:id" element={<MyPayment />} />
           <Route path="addaproduct" element={<AddAProduct />} />
           <Route path="manageorders" element={<ManageOrders />} />
-          <Route path="manageproducts" element={<AddAProduct />} />
+          <Route path="manageproducts" element={<ManageProducts />} />
         </Route>
         <Route path="/orderparts/:id" element={
           <RequireAuth>
