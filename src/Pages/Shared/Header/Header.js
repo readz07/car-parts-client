@@ -3,6 +3,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from "react-router-dom";
 import auth from '../../../firebase.init';
+import logo from '../../../assets/logoimage/logo.png'
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate()
@@ -30,7 +31,7 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <h3>Car Parts</h3>
+                <img src={logo} alt="logo car" width='30%'/>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
