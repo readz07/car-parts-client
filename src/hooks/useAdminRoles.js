@@ -5,7 +5,7 @@ const useAdminRoles = (user) => {
     const [admin, setAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-      axios.get(`http://localhost:5000/admin/${user?.email}`, {
+      axios.get(`https://cryptic-springs-54649.herokuapp.com/admin/${user?.email}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },

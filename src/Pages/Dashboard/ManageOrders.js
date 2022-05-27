@@ -11,7 +11,7 @@ const ManageOrders = () => {
     const [ordersDelete, setOrdersDelete] = useState([])
     const navigate = useNavigate()
     const { isLoading, error, data: allOrders, refetch } = useQuery('allorders', () =>
-        fetch(`http://localhost:5000/allorders`, {
+        fetch(`https://cryptic-springs-54649.herokuapp.com/allorders`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +32,7 @@ const ManageOrders = () => {
     }
 
     const shippingStatus = (id) => {
-        axios(`http://localhost:5000/shippingstatus/${id}`, {
+        axios(`https://cryptic-springs-54649.herokuapp.com/shippingstatus/${id}`, {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

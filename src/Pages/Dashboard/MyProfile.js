@@ -15,7 +15,7 @@ const MyProfile = () => {
             linkedin: event.target.linkedin.value,
             
         }
-        axios.post('http://localhost:5000/profile', profile)
+        axios.post('https://cryptic-springs-54649.herokuapp.com/profile', profile)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {

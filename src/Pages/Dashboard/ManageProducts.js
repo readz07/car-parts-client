@@ -8,7 +8,7 @@ const ManageProducts = () => {
     
     const [productDelete, setProductDelete] = useState([])
     const { isLoading, data: allproducts, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/parts`, {
+        fetch(`https://cryptic-springs-54649.herokuapp.com/parts`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

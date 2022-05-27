@@ -12,7 +12,7 @@ const MyOrders = () => {
     const email = user.email
     const navigate = useNavigate()
     const { isLoading, error, data: pendingOrders, refetch } = useQuery('orders', () =>
-        fetch(`http://localhost:5000/orders?email=${email}`, {
+        fetch(`https://cryptic-springs-54649.herokuapp.com/orders?email=${email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

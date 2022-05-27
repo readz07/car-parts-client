@@ -5,7 +5,7 @@ const SingleUser = ({ user, index, refetch }) => {
     const  {email, role} = user
 
     const makeAdmin =  () =>
-        fetch(`http://localhost:5000/allusers/admin/${email}`,{
+        fetch(`https://cryptic-springs-54649.herokuapp.com/allusers/admin/${email}`,{
             method: 'PUT',
             headers:{
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

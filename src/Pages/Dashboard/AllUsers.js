@@ -4,7 +4,7 @@ import SingleUser from './SingleUser';
 
 const AllUsers = () => {
     const { isLoading, error, data: users, refetch } = useQuery('allusers', () =>
-        fetch(`http://localhost:5000/allusers`,{
+        fetch(`https://cryptic-springs-54649.herokuapp.com/allusers`,{
             method: 'GET',
             headers:{
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

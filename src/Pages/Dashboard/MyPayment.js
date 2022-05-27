@@ -9,7 +9,7 @@ const MyPayment = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { isLoading, error, data: paidOrder, refetch } = useQuery(['paidorder'], () =>
-        fetch(`http://localhost:5000/paidorder/${id}`, {
+        fetch(`https://cryptic-springs-54649.herokuapp.com/paidorder/${id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

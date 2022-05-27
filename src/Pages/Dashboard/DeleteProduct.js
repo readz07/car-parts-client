@@ -5,7 +5,7 @@ const DeleteProduct = ({productDelete, setProductDelete, refetch}) => {
     const {_id} = productDelete
     
     const deleteProducts = (id) =>{
-        axios.delete(`http://localhost:5000/partsdelete/${id}`, {
+        axios.delete(`https://cryptic-springs-54649.herokuapp.com/partsdelete/${id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },

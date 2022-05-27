@@ -9,7 +9,7 @@ const OrderConfirm = () => {
     const email = user.email
     
     const { isLoading, error, data: pendingOrders, refetch } = useQuery('orders', () =>
-        fetch( `http://localhost:5000/orders?email=${email}`).then(res =>
+        fetch( `https://cryptic-springs-54649.herokuapp.com/orders?email=${email}`).then(res =>
             res.json()
         )
     )
@@ -18,7 +18,7 @@ const OrderConfirm = () => {
     // useEffect(() => {
     //     const getOrders = async() =>{
     //         const email = user.email
-    //         const url = `http://localhost:5000/orders?email=${email}`
+    //         const url = `https://cryptic-springs-54649.herokuapp.com/orders?email=${email}`
     //         const {data} = await axios.get(url)
     //         setConfirmOrder(data)
     //     }

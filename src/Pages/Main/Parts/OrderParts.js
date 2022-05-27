@@ -15,7 +15,7 @@ const OrderParts = () => {
     
   
     useEffect(() => {
-        fetch(`http://localhost:5000/part/${id}`)
+        fetch(`https://cryptic-springs-54649.herokuapp.com/part/${id}`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [id])
@@ -40,7 +40,7 @@ const OrderParts = () => {
             productDetail: description
         }
        
-        axios.post('http://localhost:5000/order', confirmOrder)
+        axios.post('https://cryptic-springs-54649.herokuapp.com/order', confirmOrder)
     .then(response=>{
         const{data} = response;
         if(data.insertedId){

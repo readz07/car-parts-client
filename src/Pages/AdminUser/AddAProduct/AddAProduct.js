@@ -14,7 +14,7 @@ const AddAProduct = () => {
             price: parseInt(event.target.price.value),
             minQuantity: parseInt(event.target.quantity.value),
         }
-        axios.post('http://localhost:5000/parts', addProduct)
+        axios.post('https://cryptic-springs-54649.herokuapp.com/parts', addProduct)
             .then(response => {
                 const { data } = response;
                 if (data.insertedId) {

@@ -25,7 +25,7 @@ const CheckOut = ({ paidOrder }) => {
     const [clientSecret, setClientSecret] = useState('');
     
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://cryptic-springs-54649.herokuapp.com/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -102,7 +102,7 @@ const CheckOut = ({ paidOrder }) => {
             }
 
             // fetch data
-            fetch(`http://localhost:5000/paidorders/${_id}`, {
+            fetch(`https://cryptic-springs-54649.herokuapp.com/paidorders/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

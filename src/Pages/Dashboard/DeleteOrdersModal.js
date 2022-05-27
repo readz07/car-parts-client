@@ -5,7 +5,7 @@ const DeleteOrdersModal = ({ ordersDelete, refetch,  setOrdersDelete }) => {
     const { _id } = ordersDelete;
     const deleteMyOrder = (id) => {
         axios
-            .delete(`http://localhost:5000/orders/${id}`, {
+            .delete(`https://cryptic-springs-54649.herokuapp.com/orders/${id}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 },
