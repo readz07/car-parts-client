@@ -1,4 +1,4 @@
-import { load } from 'dotenv';
+
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
@@ -7,11 +7,11 @@ import useAdminRoles from '../../hooks/useAdminRoles';
 import Loading from '../Shared/Loading/Loading';
 
 const Dashboard = () => {
-    // const [user] = useAuthState(auth);
-    // const [admin, loading] = useAdminRoles(user);
-    // if (loading) {
-    //     return <Loading></Loading>
-    // }
+    const [user] = useAuthState(auth);
+    const [admin, loading] = useAdminRoles(user);
+    if (loading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <div className="drawer drawer-mobile">
@@ -26,12 +26,12 @@ const Dashboard = () => {
                     <label for="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 overflow-y-auto w-48 bg-base-300 text-base-content">
 
-                        { <><li><Link to='/dashboard'>My Orders</Link></li>
+                        {!admin && <><li><Link to='/dashboard'>My Orders</Link></li>
                             <li><Link to='/dashboard/addmyreview'>Add A Review</Link></li>
                         </>}
 
                         <li><Link to='/dashboard/myprofile'>My Profile</Link></li>
-                        { 
+                        { admin &&
                             <>
                                 <li><Link to='/dashboard/allusers'>All Users</Link></li>
                                 <li><Link to='/dashboard/addaproduct'>Add A Product</Link></li>
