@@ -80,64 +80,64 @@ const OrderParts = () => {
         }
       };
     return (
-        <div class="grid grid-1 place-center place-items-center">
+        <div className="grid grid-1 place-center place-items-center">
             <div className='text-center mt-4 mb-4 text-5xl font-bold'><h1>Your Order Page:</h1></div>
             <ToastContainer />
-            <div class="card md:w-2/3 lg:w-1/2 sm:3/5 xs:w-full bg-base-100 shadow-xl mt-4 mb-28">
-                <div class="card-body">
-                    <div class="card-actions justify-center">                        
-                        <label for="my-modal-3" class="btn modal-button btn-accent">Product Detail</label>
+            <div className="card md:w-2/3 lg:w-1/2 sm:3/5 xs:w-full bg-base-100 shadow-xl mt-4 mb-28">
+                <div className="card-body">
+                    <div className="card-actions justify-center">                        
+                        <label for="my-modal-3" className="btn modal-button btn-accent">Product Detail</label>
                     </div>                  
                     <form onSubmit={handleOrder}>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Email</span>
                         </label>
-                        <input type="email" value={user?.email} readOnly disabled class="input input-bordered" />
+                        <input type="email" value={user?.email} readOnly disabled className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Name</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Name</span>
                         </label>
-                        <input type="text" value={user?.displayName} readOnly disabled class="input input-bordered" />
+                        <input type="text" value={user?.displayName} readOnly disabled className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Phone Number</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Phone Number</span>
                         </label>
-                        <input type="text" name="phone" required placeholder='Type phone number here' class="input input-bordered" />
+                        <input type="text" name="phone" required placeholder='Type phone number here' className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Address</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Address</span>
                         </label>
-                        <input type="text" name="address" required placeholder='Type address here' class="input input-bordered text-area" />
+                        <input type="text" name="address" required placeholder='Type address here' className="input input-bordered text-area" />
                     </div>                   
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text font-bold">Product Price</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold">Product Price</span>
                         </label>
-                        <input type="text" value={price} readOnly disabled class="input input-bordered" />
+                        <input type="text" value={price} readOnly disabled className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text font-bold">Total Product Stock</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold">Total Product Stock</span>
                         </label>
-                        <input type="text" value={stock} readOnly disabled class="input input-bordered" />
+                        <input type="text" value={stock} readOnly disabled className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text font-bold">Product Mnimum Order Quantity</span>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold">Product Mnimum Order Quantity</span>
                         </label>
-                        <input type="text" value={newQuantity} readOnly disabled class="input input-bordered" />
+                        <input type="text" value={newQuantity} readOnly disabled className="input input-bordered" />
                         <p className="text-error font-bold mb-2">{quantityError ? quantityError : ""}</p>
-                        <label class="label">
-                            <span onClick={()=>handleQuantity(true)}  class="label-text font-bold btn btn-accent text-white">Add Quantity</span>
-                            <span onClick={()=>handleQuantity(false)} class="label-text font-bold btn btn-accent text-white">Less Quantity</span>
+                        <label className="label">
+                            <span onClick={()=>handleQuantity(true)}  className="label-text font-bold btn btn-accent text-white">Add Quantity</span>
+                            <span onClick={()=>handleQuantity(false)} className="label-text font-bold btn btn-accent text-white">Less Quantity</span>
                         </label>
                     </div>                   
-                    <div class="form-control mt-6">
-                        <button disabled={quantityError} type='submit' class="btn btn-primary">Confirm Order</button>
+                    <div className="form-control mt-6">
+                        <button disabled={quantityError} type='submit' className="btn btn-primary">Confirm Order</button>
                     </div>
                     </form>
                 </div>
@@ -145,21 +145,21 @@ const OrderParts = () => {
             
 
             {/* modal for prodcut detail */}
-            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-            <div class="modal">
-                <div class="modal-box relative">
-                    <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <div class="card w-full mt-4 bg-base-100 shadow-xl">
+            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box relative">
+                    <label for="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <div className="card w-full mt-4 bg-base-100 shadow-xl">
                         <figure><img src={image} alt="parts" /></figure>
-                        <div class="card-body">
-                            <h2 class="card-title">
+                        <div className="card-body">
+                            <h2 className="card-title">
                                 Parts Name: {name}
                             </h2>
                             <p>{description}</p>
-                            <div class="card-actions justify-center">
-                                <div class="badge badge-outline">Price: {price}</div>
-                                <div class="badge badge-outline">Stock: {stock}</div>
-                                <div class="badge badge-outline">Minmum Order Quantity: {minQuantity}</div>
+                            <div className="card-actions justify-center">
+                                <div className="badge badge-outline">Price: {price}</div>
+                                <div className="badge badge-outline">Stock: {stock}</div>
+                                <div className="badge badge-outline">Minmum Order Quantity: {minQuantity}</div>
                             </div>
                         </div>
                     </div>

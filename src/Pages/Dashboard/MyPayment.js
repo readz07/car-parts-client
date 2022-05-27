@@ -25,14 +25,14 @@ const MyPayment = () => {
     
     const stripePromise = loadStripe('pk_test_51L3XD6DD9r04HobkypV2GcNnlHhWfSDKQKgVrDQ2HMXnAwotkcOU6Ut2sz81TYDLFPK2mK1UBkZaXkudeTHqWHO400rsNQ3bAV');
     return (
-        <div class="grid grid-1 place-items-center">
+        <div className="grid grid-1 place-items-center">
             <div className='text-center mt-4  text-1xl'><h4>Paid For: {paidOrder.productName}</h4></div>
             <div className='text-center mt-4 mb-4 text-1xl'><h4>Total Payment: ${paidPrice}</h4></div>
 
-            <div class="card md:w-2/3 lg:w-1/2 sm:3/5 xs:w-full shadow-xl mt-4 mb-28">
-                <div class="card-body grid grid-1 place-items-center">
-                    <div class="card w-96 bg-info text-white">
-                        <div class="card-body">
+            <div className="card md:w-2/3 lg:w-1/2 sm:3/5 xs:w-full shadow-xl mt-4 mb-28">
+                <div className="card-body grid grid-1 place-items-center">
+                    <div className="card w-96 bg-info text-white">
+                        <div className="card-body">
                             <Elements stripe={stripePromise}>
                                 <CheckOut paidOrder={paidOrder}/>
                             </Elements>
