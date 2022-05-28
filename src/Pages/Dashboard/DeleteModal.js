@@ -16,7 +16,7 @@ const DeleteModal = ({ orderDelete, refetch, setOrderDelete }) => {
                 console.log(res);
             });
     };
-    console.log(_id)
+    
     return (
         <div>
             <input type="checkbox" id="my-order-delete" className="modal-toggle" />

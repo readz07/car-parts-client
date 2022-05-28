@@ -50,7 +50,7 @@ const ManageProducts = () => {
                                     <td>{!allproduct.paid && <label onClick={() => setProductDelete(allproduct)}
                                         htmlFor="product-delete"
                                         className="btn modal-button btn-sm btn-error"
-                                    >Delete Order</label>}</td>
+                                    >Delete Product</label>}</td>
                                 </tr>
                             )
                         }

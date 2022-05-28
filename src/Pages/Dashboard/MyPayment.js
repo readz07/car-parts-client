@@ -19,7 +19,7 @@ const MyPayment = () => {
     if (isLoading) {
         return (<Loading />)
     }
-    console.log(paidOrder)    
+     
     const {productPrice, productQuantity} = paidOrder
     const paidPrice = parseFloat(productPrice*productQuantity)
     

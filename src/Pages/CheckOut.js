@@ -137,7 +137,7 @@ const CheckOut = ({ paidOrder }) => {
                             },
                         }}
                     />
-                    <button className='btn btn-warning btn-sm my-2' type="submit" disabled={!stripe || !clientSecret}>
+                    <button className='btn btn-warning btn-sm my-2' type="submit" disabled={!stripe}>
                         Pay
                     </button>
                 </form>
