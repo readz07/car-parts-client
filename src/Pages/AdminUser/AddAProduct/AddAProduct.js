@@ -12,6 +12,7 @@ const AddAProduct = () => {
             image: event.target.image.value,
             description: event.target.description.value,
             price: parseInt(event.target.price.value),
+            stock: parseInt(event.target.stock.value),
             minQuantity: parseInt(event.target.quantity.value),
         }
         axios.post('https://cryptic-springs-54649.herokuapp.com/parts', addProduct)
@@ -45,6 +46,12 @@ const AddAProduct = () => {
                                 <span className="label-text">Price Per Unit</span>
                             </label>
                             <input type="number" name='price' placeholder='Type Price' required className="input input-bordered" />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Stock</span>
+                            </label>
+                            <input type="number" name="stock" required placeholder='Type quantity' className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
