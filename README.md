@@ -1,8 +1,16 @@
-# Getting Started with Create React App
+# Finally Assingment 12 Projects Is Ready To Deploy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project love link is here [Website Link:](https://car-parts-92e3e.web.app/).
 
-## Available Scripts
+## Features and technology I have used listed below:
+
+- React
+- Firebase
+- React Router
+- React Form
+- React query
+- Axios
+- Firebase Hooks and many more for client side
 
 In the project directory, you can run:
 

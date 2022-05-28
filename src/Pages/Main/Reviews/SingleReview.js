@@ -11,7 +11,7 @@ const SingleReview = ({ r }) => {
                         <img src={image} alt="person" />
                     </div>
                 </div>
-                <p>{description}</p>
+                <p>{description.slice(0,50)}</p>
                 
             </div>
         </div>
